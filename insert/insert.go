@@ -22,6 +22,10 @@ const (
 
 // Insert is used to add a new entry to the vault.
 func Insert(name string) {
+	if name == "" {
+		log.Fatalf("Can't create site with no name")
+	}
+
 	var c pio.ConfigFile
 	pub, priv, err := box.GenerateKey(rand.Reader)
 	if err != nil {
